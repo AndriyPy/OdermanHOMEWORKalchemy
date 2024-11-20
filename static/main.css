@@ -50,3 +50,41 @@ img {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+
+/* Основний стиль для списку */
+ul {
+    list-style-type: none; /* Прибираємо маркери списку */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Робимо список горизонтальним */
+    background-color: #333; /* Темний фон меню */
+}
+
+/* Стилі для елементів списку */
+li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Стилі для посилань */
+li a {
+    display: block;
+    color: white; /* Білий текст */
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none; /* Прибираємо підкреслення */
+    font-family: Arial, sans-serif; /* Шрифт меню */
+    font-size: 16px;
+    transition: background-color 0.3s; /* Анімація на ховер */
+}
+
+/* Ховер-ефект */
+li a:hover {
+    background-color: #575757; /* Змінюємо фон при наведенні */
+}
+
+/* Активний пункт меню */
+li a.active {
+    background-color: #04AA6D; /* Активний пункт - зелений фон */
+}

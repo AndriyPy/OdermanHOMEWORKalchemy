@@ -1,38 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Menu - Oderman Pizza</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <title>Menu</title>
+    <link rel="stylesheet" href="/static/main.css">
 </head>
 <body>
-    <h1>Pizza Menu</h1>
-
-    <table>
-       <tr>
-           <th>назва піци</th>
-           <th>інгредієнти</th>
-           <th>ціна піци</th>
-       </tr>
-        <tr>
-            <td>Патріотська</td>
-            <td>тісто,ковбаса</td>
-            <td>49</td>
-        </tr>
-        <tr>
-            <td>цезарь</td>
-            <td>сир,помідори</td>
-            <td>154</td>
-        </tr>
-        <tr>
-            <td>рибна</td>
-            <td>риба</td>
-            <td>311</td>
-        </tr>
+    <h1>Our Menu</h1>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Pizza Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pizza in pizzas %}
+            <tr>
+                <td>{{ pizza.pizzaname }}</td>
+                <td>{{ pizza.description }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
-
-    <img src="pizza.jpg" alt="Delicious pizza" width="300" height="200">
+    <a href="/">Back to Home</a>
 </body>
 </html>
