@@ -2,28 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
+    <title>Pizza Menu</title>
     <link rel="stylesheet" href="/static/main.css">
 </head>
 <body>
-    <h1>Our Menu</h1>
-    <table border="1" cellpadding="10" cellspacing="0">
+<div class="container">
+    <h1>Pizza Menu</h1>
+    <table style="width: 100%; border-collapse: collapse; text-align: left;">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Pizza Name</th>
                 <th>Description</th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody>
-            {% for pizza in pizzas %}
+            {% for pizza in data %}
             <tr>
+                <td>{{ pizza.id }}</td>
                 <td>{{ pizza.pizzaname }}</td>
                 <td>{{ pizza.description }}</td>
+                <td>{{ pizza.price }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <a href="/">Back to Home</a>
+</div>
 </body>
 </html>

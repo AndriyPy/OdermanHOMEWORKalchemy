@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, String
+from sqlalchemy import create_engine, String, Integer
 from sqlalchemy.orm import DeclarativeBase, sessionmaker, Mapped, mapped_column
 
 DB = "sqlite:///app.db"
@@ -15,6 +15,7 @@ class Event(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     description: Mapped[str] = mapped_column(String(240), nullable=True)
     pizzaname: Mapped[str] = mapped_column(String(50))
+    price: Mapped[int] = mapped_column(Integer)
 
     def __repr__(self):
         return f"Pizzaname:{self.pizzaname}, description:{self.description}"

@@ -1,10 +1,20 @@
 from flask import Flask, render_template, request
-from models import Session, Event
+from models import Session, Event, create_db
 
 
 app = Flask(__name__)
 
 
+@app.post('/admadd/')
+def adm():
+    with Session() as session:
+        pizzaname = request.form.get("pizzaname")
+        description = request.form.get("description")
+        price = request.form.get("price")
+        session.add(pizzaname,description,price)
+        session.commit()
+
+    return render_template('admin_add.html')
 
 @app.get('/')
 def index():
@@ -13,14 +23,15 @@ def index():
 
 @app.get('/menu')
 def menu():
-    return render_template("menu.html")
+    with Session() as session:
+        data = session.query(Event).all()
+    return render_template("menu.html", data=data)
 
-@app.get('/admadd/')
-def adm():
-    return render_template('admin_add.html')
+
 
 
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=2020)
+    app.run(debug=True, port=40000)
+    create_db()
