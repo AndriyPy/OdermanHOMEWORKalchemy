@@ -10,12 +10,27 @@
 <body>
 
     <ul>
-     <li><a href="index.html">Головна</a></li>
      <li><a href="/admadd/">Admin Add</a></li>
     </ul>
 
     <h1>OdermanPizza</h1>
     <img src="images/pizza.jpg" alt="Смачна піца" width="300" height="200">
     <a href="/menu">menu</a>
+
+
+    <form method="GET" action="/">
+        <label for="city">Введіть місто:</label>
+        <input type="text" id="city" name="city" placeholder="Наприклад, Київ" required>
+        <button type="submit">Отримати погоду</button>
+    </form>
+
+     {% if weather %}
+        <div>
+            <h2>Погода в {{ city }}</h2>
+            <p>Температура: {{ weather["temp"] }}°C</p>
+            <p>Відчувається як: {{ weather["feels_like"] }}°C</p>
+            <p>Тиск: {{ weather["pressure"] }} hPa</p>
+        </div>
+    {% endif %}
 </body>
 </html>
