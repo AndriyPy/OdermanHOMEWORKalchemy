@@ -27,6 +27,9 @@
                 <td>{{ pizza.price }}</td>
                 <td>
                     <a href="/{{ pizza.id }}/edit" class="btn btn-warning">Edit</a>
+                    <form action="/{{ pizza.id }}/delete" method="post" style="display: inline;">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this pizza?')">Delete</button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}
