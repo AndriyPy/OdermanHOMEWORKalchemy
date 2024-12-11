@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from models import Session, Event, create_db
 import requests
 
@@ -25,6 +25,8 @@ def get_weather(city):
     print(p)
 
     return weather_data
+
+
 
 
 
@@ -65,6 +67,34 @@ def menu():
     with Session() as session:
         data = session.query(Event).all()
     return render_template("menu.html", data=data)
+
+
+
+@app.get("/<int:post_id>/edit")
+def edit():
+    return render_template("edit.html")
+
+@app.post("/<int:post_id>/edit")
+def editpost():
+    with Session() as session:
+        pizzaname = request.form.get("pizzaname")
+        description = request.form.get("description")
+        price = request.form.get("price")
+        session.execute("UPDATE posts SET title = ?, content = ? WHERE id = ?", (pizzaname, description, price))
+        session.commit()
+        session.close()
+        return redirect(url_for("index"))
+
+
+
+@app.post("/<int:post_id>/delete")
+def delete(post_id):
+    with Session() as session:
+        # session.execute("DELETE FROM posts WHERE id = ?", (post_id,))
+        session.delete(post_id)
+        session.commit()
+        session.close()
+        return redirect(url_for("index"))
 
 
 if __name__ == '__main__':

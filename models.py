@@ -6,6 +6,7 @@ engine = create_engine(DB, echo=True)
 
 Session = sessionmaker(bind=engine)
 
+
 class Base(DeclarativeBase):
     ...
 
